@@ -1,0 +1,34 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    srand(time(0));
+
+    const int m = 3, n = 3;
+    int arr[m][n];
+
+    cout << "Matrix:\n";
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            arr[i][j] = rand() % 10;
+            cout << arr[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    int mainDiagonalSum = 0;
+    int sideDiagonalSum = 0;
+
+    for (int i = 0; i < 3; i++) {
+        mainDiagonalSum += arr[i][i];          
+        sideDiagonalSum += arr[i][3 - i - 1]; 
+    }
+
+    cout << "\nMain diagonal: " << mainDiagonalSum << endl;
+    cout << "Side diagonal: " << sideDiagonalSum << endl;
+
+    return 0;
+}
