@@ -1,0 +1,34 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    const int m = 6, n = 4;
+    int massive[m][n];
+
+    srand(time(0));
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            massive[i][j] = rand() % 10;
+            cout << massive[i][j] << "\t";
+        }
+        cout << "\n";
+    }
+
+    cout << "\n";
+
+    for (int j = 0; j < n; j++) {
+
+        int even_in_col = 0; 
+
+        for (int i = 0; i < m; i++) {
+            if (massive[i][j] % 2 == 0 && massive[i][j] != 0) {
+                even_in_col++;
+            }
+        }
+
+        cout << "Even numbers in column " << j+1 << ": " << even_in_col << "\n";
+    }
+}
