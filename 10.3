@@ -1,0 +1,29 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    const int m = 5, n = 7;
+    int massive[m][n];
+
+    srand(time(0));
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            massive[i][j] = rand() % 10;
+            cout << massive[i][j] << "\t";
+        }
+        cout << "\n";
+    }
+
+    for(int i = 0; i < m; i++) {
+        int sum_row = 0;
+        for (int j = 0; j < n; j++) {
+            sum_row += massive[i][j];
+
+        }
+        cout << "\n";
+        cout << "Sum of elements in row " << i+1 << ": " << sum_row << "\n";
+	}
+}
