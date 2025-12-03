@@ -1,0 +1,88 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <climits>
+using namespace std;
+
+int main() {
+    const int m = 4, n = 7;
+    int a[m][n];
+    int choice;
+
+    cout << "Choose mode:\n";
+    cout << "1 - Numbers 0..9 and show all min indexes\n";
+    cout << "2 - Numbers without limits (rand) and show min index\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    srand(time(0));
+
+    int minValue;
+
+    switch (choice) {
+
+    case 1: {
+        minValue = 9;  
+
+        cout << "\n--- MODE 1: Values 0..9 ---\n\n";
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = rand() % 10;
+                cout << a[i][j] << "\t";
+
+                if (a[i][j] < minValue)
+                    minValue = a[i][j];
+            }
+            cout << "\n";
+        }
+
+        cout << "\nMin value = " << minValue << "\n";
+        cout << "Indexes of minimal elements:\n";
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a[i][j] == minValue)
+                    cout << "(" << i + 1 << ", " << j + 1 << ")\n";
+            }
+        }
+
+        break;
+    }
+
+    case 2: {
+        minValue = INT_MAX; 
+
+        cout << "\n--- MODE 2: Unlimited numbers (rand) ---\n\n";
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = rand();
+                cout << a[i][j] << "\t";
+
+                if (a[i][j] < minValue)
+                    minValue = a[i][j];
+            }
+            cout << "\n";
+        }
+
+        cout << "\nMin value = " << minValue << "\n";
+        cout << "Index(es) of min value:\n";
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a[i][j] == minValue)
+                    cout << "(" << i + 1 << ", " << j + 1 << ")\n";
+            }
+        }
+
+        break;
+    }
+
+    default:
+        cout << "Invalid choice!\n";
+        break;
+    }
+
+    return 0;
+}
